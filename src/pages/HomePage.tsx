@@ -99,184 +99,222 @@ const HomePage: React.FC = () => {
       </div>
 
       <style>{`
-        /* Variables */
-        :root {
-          /* Color Palette */
-          --primary-50: #eff6ff;
-          --primary-100: #dbeafe;
-          --primary-200: #bfdbfe;
-          --primary-300: #93c5fd;
-          --primary-400: #60a5fa;
-          --primary-500: #3b82f6;
-          --primary-600: darkblue;
-          --primary-700: #1d4ed8;
-          --primary-800: #122a7c;
-          --primary-900: darkblue;
-
-          --gray-50: #f9fafb;
-          --gray-100: #f3f4f6;
-          --gray-200: #e5e7eb;
-          --gray-300: #d1d5db;
-          --gray-400: #9ca3af;
-          --gray-500: #6b7280;
-          --gray-600: #4b5563;
-          --gray-700: #374151;
-          --gray-800: #1f2937;
-          --gray-900: #111827;
-
-          --orange-500: #f97316;
-          --orange-600: #ea580c;
-
-          /* Shadows */
-          --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-          --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-          --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-          --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-          --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-          --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-
-          /* Border Radius */
-          --radius-sm: 0.125rem;
-          --radius: 0.25rem;
-          --radius-md: 0.375rem;
-          --radius-lg: 0.5rem;
-          --radius-xl: 0.75rem;
-          --radius-2xl: 1rem;
-          --radius-3xl: 1.5rem;
-          --radius-full: 9999px;
-
-          /* Spacing */
-          --space-1: 0.25rem;
-          --space-2: 0.5rem;
-          --space-3: 0.75rem;
-          --space-4: 1rem;
-          --space-5: 1.25rem;
-          --space-6: 1.5rem;
-          --space-8: 2rem;
-          --space-10: 2.5rem;
-          --space-12: 3rem;
-          --space-16: 4rem;
-          --space-20: 5rem;
-          --space-24: 6rem;
-          --space-32: 8rem;
-
-          /* Typography */
-          --font-size-sm: 0.875rem;
-          --font-size-base: 1rem;
-          --font-size-lg: 1.125rem;
-          --font-size-xl: 1.25rem;
-          --font-size-2xl: 1.5rem;
-          --font-size-3xl: 1.875rem;
-          --font-size-4xl: 2.25rem;
-          --font-size-5xl: 3rem;
-          --font-size-6xl: 3.75rem;
-
-          --font-weight-normal: 400;
-          --font-weight-medium: 500;
-          --font-weight-semibold: 600;
-          --font-weight-bold: 700;
-
-          /* Transitions */
-          --transition-fast: 0.15s ease-out;
-          --transition-base: 0.3s ease-out;
-          --transition-slow: 0.6s ease-out;
-        }
-
-        /* Footer */
-        .footer {
-          background-color: rgb(32, 32, 46);
-          color: white;
-          padding: var(--space-16) 0 var(--space-8);
-        }
-
-        .footer-content {
-          display: grid;
-          gap: var(--space-8);
-          margin-bottom: var(--space-12);
-        }
-
-        .footer-brand {
-          max-width: 24rem;
-        }
-
-        .footer-logo {
-          font-size: var(--font-size-2xl);
-          font-weight: var(--font-weight-bold);
-          color: var(--primary-400);
-          margin-bottom: var(--space-4);
-        }
-
-        .footer-description {
-          color: var(--gray-400);
-          line-height: 1.75;
-        }
-
-        .footer-title {
-          font-size: var(--font-size-lg);
-          font-weight: var(--font-weight-semibold);
-          margin-bottom: var(--space-4);
-        }
-
-        .footer-list {
-          list-style: none;
-        }
-
-        .footer-list li {
-          margin-bottom: var(--space-2);
-        }
-
-        .footer-link {
-          color: var(--gray-400);
-          text-decoration: none;
-          transition: color var(--transition-base);
-        }
-
-        .footer-link:hover {
-          color: white;
-        }
-
-        .hours-content {
-          color: var(--gray-400);
-        }
-
-        .hours-day {
-          margin-bottom: var(--space-1);
-        }
-
-        .hours-time {
-          font-weight: var(--font-weight-medium);
-          margin-bottom: var(--space-2);
-        }
-
-        .footer-bottom {
-          border-top: 1px solid var(--gray-700);
-          padding-top: var(--space-8);
-        }
-
-        .footer-bottom-content {
+        /* Modern UI Styles */
+        .preloader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: var(--gradient-hero);
           display: flex;
-          flex-direction: column;
-          gap: var(--space-4);
+          justify-content: center;
           align-items: center;
+          z-index: 9999;
+          transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
-        .footer-copyright {
-          color: var(--gray-400);
+        .dark-mode-toggle {
+          position: fixed;
+          top: 2rem;
+          right: 2rem;
+          z-index: 100;
+          backdrop-filter: blur(20px);
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 1rem;
+          padding: 0.5rem;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
-        .footer-social {
+        .toggle-container {
           display: flex;
-          gap: var(--space-6);
+          align-items: center;
+          gap: 0.5rem;
         }
 
-        .social-link {
-          color: var(--gray-400);
-          text-decoration: none;
-          transition: color var(--transition-base);
+        .toggle-icon {
+          width: 1.25rem;
+          height: 1.25rem;
+          color: hsl(var(--muted-foreground));
+          transition: color 0.3s ease;
         }
 
-        .social-link:hover {
-          color: var(--primary-400);
+        .toggle-button {
+          width: 3rem;
+          height: 1.5rem;
+          background: hsl(var(--muted));
+          border-radius: 1rem;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          transition: background 0.3s ease;
+        }
+
+        .toggle-button.active {
+          background: hsl(var(--primary));
+        }
+
+        .toggle-slider {
+          width: 1.25rem;
+          height: 1.25rem;
+          background: white;
+          border-radius: 50%;
+          position: absolute;
+          top: 0.125rem;
+          left: 0.125rem;
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-button.active .toggle-slider {
+          transform: translateX(1.5rem);
+        }
+
+        .hero-section {
+          position: relative;
+          height: 100vh;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hero-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 1;
+          transition: opacity 1s ease-in-out;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: var(--gradient-hero);
+          opacity: 0.85;
+          z-index: 2;
+        }
+
+        .hero-content {
+          position: relative;
+          z-index: 3;
+          max-width: 80rem;
+          padding: 0 2rem;
+        }
+
+        .slide-dots {
+          position: absolute;
+          bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 0.75rem;
+          z-index: 4;
+        }
+
+        .slide-dot {
+          width: 0.75rem;
+          height: 0.75rem;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.5);
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .slide-dot.active {
+          background: white;
+          border-color: white;
+          transform: scale(1.2);
+        }
+
+        .card-modern {
+          background: hsl(var(--card));
+          border: 1px solid hsl(var(--border));
+          border-radius: 1.5rem;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .card-modern::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 0.25rem;
+          background: var(--gradient-primary);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .card-modern:hover::before {
+          opacity: 1;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-0.5rem) scale(1.02);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-gradient-orange {
+          background: var(--gradient-secondary);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .heading-modern {
+          font-family: 'Sora', sans-serif;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .text-shadow-soft {
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        .interactive-element {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .header {
+            padding: 1rem 0;
+          }
+
+          .nav-menu {
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .hero-content {
+            padding: 0 1rem;
+          }
+
+          .dark-mode-toggle {
+            top: 1rem;
+            right: 1rem;
+          }
         }
       `}</style>
 
@@ -298,18 +336,18 @@ const HomePage: React.FC = () => {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="text-center text-white px-4 max-w-7xl animate-fade-in">
-            <h2 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-medium mb-6 leading-tight animate-scale-in text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 leading-tight animate-scale-in text-left heading-modern">
               {currentSlide === 0 ? (
-                <>LEARN GROW AND <span style={{color: 'orangered'}}>EXPLORE ENDLESS OPPORTUNITIES!</span></>
+                <>LEARN GROW AND <span className="text-gradient-orange">EXPLORE ENDLESS OPPORTUNITIES!</span></>
               ) : (
                 slides[currentSlide].title
               )}
-            </h2>
-            <p className="text-lg md:text-md lg:text-3xl xl:text-4xl mb-8 opacity-90 animate-slide-in-right max-w-5xl leading-relaxed text-left">
+            </h1>
+            <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-12 opacity-95 animate-slide-in-right max-w-6xl leading-relaxed text-left font-medium">
               {slides[currentSlide].subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-left animate-fade-in">
-              <button className="btn btn-primary px-3 py-4 lg:px-8 lg:py-6 text-lg lg:text-xl">
+            <div className="flex flex-col sm:flex-row gap-6 justify-left animate-fade-in">
+              <button className="btn btn-primary px-8 py-4 lg:px-12 lg:py-6 text-lg lg:text-xl">
                 <a href="/getStarted.html">Join Now</a>
               </button>
               <button className="btn btn-secondary px-8 py-4 lg:px-12 lg:py-6 text-lg lg:text-xl">
@@ -331,28 +369,32 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Mission and Vision */}
-      <section className="py-16 lg:py-24 bg-gray-50 features">
+      <section className="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50 features">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
-            <div className="card-modern hover-lift interactive-element p-8 lg:p-12" style={{background: 'linear-gradient(135deg, #1e40af, #2563eb)', border: '1px solid rgba(255, 255, 255, 0.2)'}}>
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg animate-float">
-                <span className="text-2xl lg:text-3xl text-white">🎯</span>
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
+            <div className="card-modern hover-lift interactive-element p-8 lg:p-12 bg-gradient-to-br from-blue-600 to-blue-700 border border-white/20 shadow-xl">
+              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-white/20 rounded-2xl flex items-center justify-content-center mb-8 shadow-lg animate-float backdrop-blur-sm">
+                <span className="text-3xl lg:text-4xl">🎯</span>
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-gradient-orange text-left heading-modern text-shadow-soft" style={{color: '#ffffff'}}>Our Mission</h3>
-              <p className="text-lg lg:text-xl mb-3 leading-relaxed text-gray-400 text-left">
-                To connect education and technology with innovative and practical tutoring that enhances tech skills....
+              <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-white text-left heading-modern text-shadow-soft">Our Mission</h3>
+              <p className="text-lg lg:text-xl mb-6 leading-relaxed text-blue-100 text-left">
+                To connect education and technology with innovative and practical tutoring that enhances tech skills and empowers the next generation of digital leaders.
               </p>
-              <a href="/aboutUs.html#ourMission" className="flex align-left">Learn More</a>
+              <a href="/aboutUs.html#ourMission" className="inline-flex items-center gap-2 text-white font-semibold hover:text-blue-200 transition-colors">
+                Learn More <span>→</span>
+              </a>
             </div>
-            <div className="card-modern hover-lift interactive-element p-8 lg:p-12" style={{background: 'linear-gradient(135deg, #ff4500, #ff6347)', border: '1px solid rgba(255, 255, 255, 0.2)'}}>
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg animate-float">
-                <span className="text-2xl lg:text-3xl text-white">🚀</span>
+            <div className="card-modern hover-lift interactive-element p-8 lg:p-12 bg-gradient-to-br from-orange-500 to-red-500 border border-white/20 shadow-xl">
+              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-white/20 rounded-2xl flex items-center justify-content-center mb-8 shadow-lg animate-float backdrop-blur-sm">
+                <span className="text-3xl lg:text-4xl">🚀</span>
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-left heading-modern text-shadow-soft" style={{color: '#ffffff'}}>Our Vision</h3>
-              <p className="text-lg lg:text-xl mb-3 leading-relaxed text-gray-400 text-left">
-                Shaping the future of tech—raising brilliant minds and crafting skilled...
+              <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-white text-left heading-modern text-shadow-soft">Our Vision</h3>
+              <p className="text-lg lg:text-xl mb-6 leading-relaxed text-orange-100 text-left">
+                Shaping the future of tech—raising brilliant minds and crafting skilled professionals who will drive innovation in the digital world.
               </p>
-              <a href="/aboutUs.html#ourVision" className="flex align-left">Learn More</a>
+              <a href="/aboutUs.html#ourVision" className="inline-flex items-center gap-2 text-white font-semibold hover:text-orange-200 transition-colors">
+                Learn More <span>→</span>
+              </a>
             </div>
           </div>
         </div>

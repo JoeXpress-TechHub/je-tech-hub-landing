@@ -1,20 +1,12 @@
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  root: '.',
-  build: {
-    outDir: 'dist',
-    rollupOptions: {
-      input: {
-        main: 'index.html',
-        about: 'aboutUs.html',
-        programs: 'programs.html',
-        contact: 'contactUs.html',
-        getStarted: 'getStarted.html'
-      }
-    }
-  },
+  plugins: [react()],
   server: {
-    open: '/index.html'
+    port: 8080
+  },
+  build: {
+    outDir: 'dist'
   }
 })

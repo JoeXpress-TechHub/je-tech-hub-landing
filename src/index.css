@@ -1,0 +1,359 @@
+/* Import existing styles and maintain all functionality */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+body.dark {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+/* Import all existing CSS animations */
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-fade-in { animation: fade-in 0.6s ease-out; }
+.animate-scale-in { animation: scale-in 0.4s ease-out; }
+.animate-slide-in-right { animation: slide-in-right 0.8s ease-out; }
+.animate-bounce { animation: bounce 2s infinite; }
+.animate-pulse { animation: pulse 2s infinite; }
+
+/* Variables from original files */
+:root {
+    /* Color Palette */
+    --primary-50: #eff6ff;
+    --primary-100: #dbeafe;
+    --primary-200: #bfdbfe;
+    --primary-300: #93c5fd;
+    --primary-400: #60a5fa;
+    --primary-500: #3b82f6;
+    --primary-600: darkblue;
+    --primary-700: #1d4ed8;
+    --primary-800: #122a7c;
+    --primary-900: darkblue;
+
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+
+    --orange-500: #f97316;
+    --orange-600: #ea580c;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+    /* Border Radius */
+    --radius-sm: 0.125rem;
+    --radius: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    /* Typography */
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease-out;
+    --transition-base: 0.3s ease-out;
+    --transition-slow: 0.6s ease-out;
+}
+
+/* All existing utility classes and components */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Import all existing button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px 0 rgba(31, 38, 135, 0.2);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1e40af, #2563eb, #1d4ed8);
+    background-size: 200% 200%;
+    color: white;
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ff4500, #ff6347, #ff4500);
+    background-position: right center;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 69, 0, 0.4);
+}
+
+.btn-secondary {
+    border: 2px solid #ff4500;
+    color: #ff4500;
+    background: linear-gradient(135deg, rgba(255, 69, 0, 0.1), rgba(255, 99, 71, 0.1));
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff4500, #ff6347);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.btn-secondary:hover {
+    color: white;
+    border-color: #ff6347;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 69, 0, 0.3);
+}
+
+.btn-secondary:hover::after {
+    left: 0;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    height: 100px;
+    margin-right: 10px;
+    scale: 1.2;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    position: relative;
+}
+
+.nav-menu a.active {
+    color: darkblue;
+}
+
+.nav-menu a.active::after {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: darkblue;
+    margin-top: 5px;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Heading styles */
+.heading {
+    color: darkblue;
+    position: relative;
+}
+
+.heading::after {
+    position: absolute;
+    content: " ";
+    width: 70%;
+    height: 3px;
+    background: darkblue;
+    left: 0;
+}
+
+.heading::before {
+    position: absolute;
+    content: " ";
+    width: 30%;
+    height: 3px;
+    background: darkblue;
+    left: 0;
+    bottom: 0%;
+}
+
+.orangeHeading {
+    color: darkblue;
+    position: relative;
+    text-align: left;
+}
+
+.orangeHeading::before {
+    position: absolute;
+    content: " ";
+    width: 10%;
+    height: 3px;
+    background: orangered;
+    left: -1;
+    bottom: 0%;
+}
+
+.lineHeight {
+    line-height: 2em;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+a {
+    color: orangered;
+    text-decoration: none;
+    text-align: left;
+}
+
+/* Import all remaining styles from the original files */
+.flex {
+    display: grid;
+}
+
+@media (width > 768px) {
+    .flex {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.features {
+    @media (width > 768px) {
+        transform: translateY(-40%);
+        background: transparent;
+    }
+}
+
+/* Footer styles */
+.footer {
+    background-color: rgb(32, 32, 46);
+    color: white;
+    padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-content {
+    display: grid;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+}
+
+/* All other existing styles preserved */

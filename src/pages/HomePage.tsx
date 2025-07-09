@@ -4,56 +4,56 @@ const HomePage: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Hero slides data
+  // Hero slides data - optimized for fast loading
   const slides = [
     {
       title: "LEARN GROW AND EXPLORE ENDLESS OPPORTUNITIES!",
       subtitle: "Join a community of like-minded learners and industry professionals who are passionate about technology and...",
-      bgImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=1080&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&auto=format&q=80"
     },
     {
       title: "We Provide Services That You Can Trust!",
       subtitle: "Dedicated to empowering individuals and businesses with cutting-edge solutions.",
-      bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1080&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop&auto=format&q=80"
     },
     {
       title: "Get the skills, mentorship, and resources you need to thrive in today's digital world.",
       subtitle: "",
-      bgImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop&auto=format&q=80"
     }
   ];
 
-  // Programs data
+  // Programs data - optimized images
   const programs = [
     {
       title: "Software Development",
       description: "Learn to build responsive and dynamic websites using modern technologies like HTML, CSS, JavaScript, and frameworks. Whether you want to create personal blogs, business websites, or complex web applications, our courses will equip you with the skills to succeed in the tech industry.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=200&fit=crop&auto=format&q=80"
     },
     {
       title: "Video Editing and Graphics Design",
       description: "Unleash your creativity by mastering both video editing and graphic design. Learn to transform raw footage into professional-quality videos using industry-standard software like Adobe Premiere Pro and DaVinci Resolve. At the same time, develop skills in graphic design with tools like Photoshop, Illustrator, and Canva to create eye-catching logos, posters, social media content, and marketing materials.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=200&fit=crop&auto=format&q=80"
     },
     {
       title: "Data Analysis",
       description: "Turn data into insights and make data-driven decisions. Learn how to use tools like Excel, Python, SQL, and Power BI to analyze and visualize data, helping businesses and organizations optimize their performance.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=200&fit=crop&auto=format&q=80"
     },
     {
       title: "Forex Trading",
       description: "Discover how to trade the global financial markets and make informed investment decisions. Learn the fundamentals of forex trading, technical and fundamental analysis, risk management, and strategies to become a successful trader.",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=200&fit=crop&auto=format&q=80"
     },
     {
       title: "UI/UX Design",
       description: "Master the art of creating user-friendly and visually appealing interfaces. Learn the principles of user experience (UX) and user interface (UI) design using tools like Figma and Adobe XD to craft intuitive and engaging digital experiences.",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=200&fit=crop&auto=format&q=80"
     },
     {
       title: "Gadget Repairs & Sales",
       description: "Top-Quality Gadgets, or reliable repair services? We offer a wide range of mobile devices, accessories and tech essentials at unbeatable prices... Whether you need a brand-new, high-performance gadget or expert repairs for your damaged device, We are ready to assist.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=200&fit=crop&auto=format&q=80"
     }
   ];
 
@@ -74,13 +74,6 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      {/* Preloader */}
-      <div id="preloader" className="preloader">
-        <div className="text-center text-white animate-pulse">
-          <h1 className="text-6xl font-bold mb-4 animate-bounce">JOE EXPRESS</h1>
-          <h2 className="text-3xl font-light animate-fade-in">TECH HUB</h2>
-        </div>
-      </div>
 
       {/* Dark Mode Toggle */}
       <div className="dark-mode-toggle">
@@ -100,19 +93,6 @@ const HomePage: React.FC = () => {
 
       <style>{`
         /* Modern UI Styles */
-        .preloader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: var(--gradient-hero);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-          transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
 
         .dark-mode-toggle {
           position: fixed;
@@ -332,7 +312,13 @@ const HomePage: React.FC = () => {
 
       {/* Hero Section */}
       <section id="home" className="hero-section">
-        <img src={slides[currentSlide].bgImage} alt="Tech background" className="hero-image" />
+        <img 
+          src={slides[currentSlide].bgImage} 
+          alt="Tech background" 
+          className="hero-image" 
+          loading="eager"
+          decoding="async"
+        />
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="text-center text-white px-4 max-w-7xl animate-fade-in">
@@ -407,7 +393,13 @@ const HomePage: React.FC = () => {
           <div className="flex">
             <div className="mb-12 lg:mb-16 relative group">
               <div className="absolute -inset-1 bg-blue-800 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-300" style={{background: 'linear-gradient(to right, #1e40af, #2563eb)'}}></div>
-              <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop" alt="About us" className="relative w-full max-w-4xl lg:max-w-5xl mx-auto rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105" />
+              <img 
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=300&fit=crop&auto=format&q=80" 
+                alt="About us" 
+                className="relative w-full max-w-4xl lg:max-w-5xl mx-auto rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105" 
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div className="space-y-6 lg:space-y-8 max-w-5xl mx-auto">
               <p className="text-lg lg:text-xl leading-relaxed text-gray-600 lineHeight">
@@ -465,7 +457,13 @@ const HomePage: React.FC = () => {
               <div key={index} className="group rounded-2xl p-6 lg:p-8 transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:-translate-y-4 bg-gray-50 hover:bg-white hover:shadow-xl">
                 <div className="h-52 lg:h-60 rounded-xl mb-6 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                  <img src={program.image} alt={program.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img 
+                    src={program.image} 
+                    alt={program.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <h3 className="text-xl lg:text-2xl font-bold mb-4 group-hover:text-blue-800 transition-colors duration-300 text-gray-800 orangeHeading">{program.title}</h3>
                 <p className="mb-6 leading-relaxed text-sm lg:text-base text-gray-600">{program.description}</p>
